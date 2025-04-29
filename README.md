@@ -4,7 +4,7 @@ Official website of **DN Property Management**, a property management company ba
 
 ## Live Site
 
-[https://dn-property-management.vercel.app](https://dn-propertymanagement-production.up.railway.app)
+[https://dn-property-management.vercel.app](https://dnpropertymanagementcr.up.railway.app)
 
 ## Technologies Used
 
