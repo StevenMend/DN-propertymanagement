@@ -7,9 +7,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "DN Property Management | Luxury Property Management Services",
-  description:
-    "Complete management, guaranteed peace of mind. We take care of every detail so you can enjoy without worries.",
+  title: "DN Property",
+  description: "Luxury property management services",
     generator: 'v0.dev'
 }
 
@@ -22,7 +21,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          {children}
+          <div className="min-h-screen bg-black overflow-x-hidden">{children}</div>
         </ThemeProvider>
       </body>
     </html>

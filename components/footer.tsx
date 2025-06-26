@@ -10,7 +10,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3">
               <div className="relative h-10 w-16 sm:w-12">
                 <Image
-                  src="/images/logo.png"
+                  src="/logo.png"
                   alt="DN Property Management"
                   fill
                   className="object-contain"
@@ -28,19 +28,21 @@ export function Footer() {
             <div className="space-y-4">
               <h3 className="text-base font-medium text-white">Quick Links</h3>
               <nav className="flex flex-col space-y-2">
-                <a href="#about" className="text-sm text-zinc-400 hover:text-white transition-colors">
+                <a href="#why-choose-us" className="text-sm text-zinc-400 hover:text-white transition-colors">
                   Why Choose Us
                 </a>
-                <a href="#services" className="text-sm text-zinc-400 hover:text-white transition-colors">
+                <a href="#plans" className="text-sm text-zinc-400 hover:text-white transition-colors">
                   Plans
-                  </a>
+                </a>
                 <a href="#additional-services" className="text-sm text-zinc-400 hover:text-white transition-colors">
                   Additional Services
-                
-                  </a>
+                </a>
+                <a href="#testimonials" className="text-sm text-zinc-400 hover:text-white transition-colors">
+                  Testimonials
+                </a>
                 <a href="#contact" className="text-sm text-zinc-400 hover:text-white transition-colors">
                   Contact
-                  </a>
+                </a>
               </nav>
             </div>
             <div className="space-y-4">
@@ -58,7 +60,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-zinc-500">
-            DN Property Management © {new Date().getFullYear()} | Luxury property management services in Costa Rica
+            DN Property Management © {new Date().getFullYear()} Dev by Steven Mendez.
           </p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link

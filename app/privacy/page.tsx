@@ -21,61 +21,41 @@ export default function PrivacyPage() {
 
           <div className="space-y-8 text-zinc-300">
             <p className="leading-relaxed">
-              The purpose of this Privacy Policy is to inform you of what kinds of information we may gather during the
-              visit to the Site, how we may use that information, whether we disclose it, and the choices you have
-              regarding our use of and your ability to manage and edit the information. This Privacy Policy applies to
-              the Site. This Privacy Policy does not apply to other websites to which we link.
+              At DN Property Management, we take your privacy seriously. This Privacy Policy explains how we collect,
+              use, and protect your personal information.
             </p>
 
             <div>
-              <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Information Collection</h2>
-              <p className="leading-relaxed mb-4">
-                We collect personal information when you wish to use certain features of the Site, such as registering
-                to receive information from us. When you choose to use these features, we ask for information such as
-                your name and email address.
-              </p>
+              <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Information We Collect</h2>
               <p className="leading-relaxed">
-                Through the Site, we may automatically gather certain information about the use of the Site, such as how
-                frequently certain areas of the Site are visited, including through the use of cookies, web beacons and
-                other technologies.
+                We may collect personal information such as your name, email address, phone number, and property details
+                when you use our services or contact us through our website.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">How We Use Your Information</h2>
-              <p className="leading-relaxed mb-4">
-                We use the information we collect to provide and improve our services, to communicate with you, and to
-                personalize your experience.
-              </p>
-              <ul className="list-disc pl-5 space-y-2">
-                <li>To respond to your inquiries and fulfill your requests</li>
-                <li>To send administrative information, such as changes to our terms, conditions, and policies</li>
-                <li>To personalize your experience on our Site</li>
-                <li>To improve our Site and services</li>
+              <p className="leading-relaxed mb-4">We use your personal information to:</p>
+              <ul className="list-disc pl-6 space-y-2 text-zinc-300">
+                <li>Provide and improve our property management services</li>
+                <li>Communicate with you about your property</li>
+                <li>Send you updates and promotional materials (with your consent)</li>
+                <li>Comply with legal obligations</li>
               </ul>
             </div>
 
             <div>
-              <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Information Sharing</h2>
+              <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Information Security</h2>
               <p className="leading-relaxed">
-                We do not sell, rent, or otherwise share your personal information with third parties except as
-                described in this Privacy Policy. We may share your information with trusted service providers who
-                assist us in operating our website and conducting our business.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Your Rights</h2>
-              <p className="leading-relaxed">
-                You have the right to access, correct, or delete your personal information. If you would like to
-                exercise any of these rights, please contact us using the information provided below.
+                We implement appropriate security measures to protect your personal information from unauthorized
+                access, alteration, disclosure, or destruction.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Contact Us</h2>
               <p className="leading-relaxed">
-                If you have any questions about this Privacy Policy, please contact us at:
+                If you have any questions about our Privacy Policy, please contact us at:
               </p>
               <p className="mt-2 text-white">
                 <strong>Email:</strong> propertymanagement.dn@gmail.com

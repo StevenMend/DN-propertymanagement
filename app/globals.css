@@ -2,109 +2,2076 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --radius: 0.75rem;
-  }
-
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-  }
+:root {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 4%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 4%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 9%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 9%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 0 0% 63.9%;
+  --radius: 0.5rem;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+html,
+body {
+  @apply bg-black text-white;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Adjust based on header height */
 }
 
-/* Estilos personalizados para efectos de hover y transiciones */
-.hover-glow {
-  transition: all 0.3s ease;
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-}
-
-/* Animación sutil para elementos al entrar en viewport */
-@keyframes fadeInUp {
+/* Animaciones personalizadas */
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-.animate-fadeInUp {
-  animation: fadeInUp 0.5s ease-out forwards;
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* Fix for mobile menu scrolling */
-.fixed-body {
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Clases de animaciÃ³n */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+.delay-900 {
+  animation-delay: 900ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* Estilos para el splash screen */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-logo {
+  width: 150px;
+  height: 150px;
+  animation: scaleIn 1s ease-out forwards, float 3s ease-in-out infinite;
+}
+
+/* Estilos para el carrusel de testimonios */
+.testimonial-carousel {
+  position: relative;
   overflow: hidden;
 }
 
-/* Improved focus styles for accessibility */
-a:focus-visible,
-button:focus-visible {
-  @apply outline-none ring-2 ring-white/50 ring-offset-2 ring-offset-black;
+.testimonial-slide {
+  transition: transform 0.5s ease-out;
 }
 
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  h1 {
-    @apply text-3xl;
+/* Estilos para el indicador de secciÃ³n activa */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Estilos para las tarjetas con hover effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Estilos para el formulario */
+.form-input {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: white;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.form-input.error {
+  border-color: #ff4a4a;
+}
+
+/* Estilos para el botÃ³n de scroll to top */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+  z-index: 10;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+}
+
+.scroll-to-top:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilos para el tema oscuro/claro */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilos para el mapa */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.map-marker {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.map-marker:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.map-marker::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translate(-50%, -50%);
+}
+
+/* Estilos para el estimador de precios */
+.price-estimator {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-slider {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  position: relative;
+  margin: 20px 0;
+}
+
+.price-slider-handle {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.price-slider-handle:hover {
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.price-slider-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: white;
+  border-radius: 2px;
+}
+
+/* Estilos para el efecto de parallax */
+.parallax {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.1s ease-out;
+}
+
+/* Estilos para el efecto de glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos para el efecto de neomorfismo */
+.neomorphism {
+  background: linear-gradient(145deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2), -10px -10px 20px rgba(40, 40, 40, 0.1);
+}
+
+/* Estilos para el efecto de texto con gradiente */
+.gradient-text {
+  background: linear-gradient(90deg, #ffffff, #a0a0a0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Estilos para el efecto de borde con gradiente */
+.gradient-border {
+  position: relative;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+}
+
+.gradient-border-content {
+  background-color: black;
+  border-radius: 11px;
+  height: 100%;
+}
+
+/* Estilos para el efecto de desenfoque en el fondo */
+.blur-bg {
+  position: relative;
+}
+
+.blur-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(10px);
+  z-index: -1;
+}
+
+/* Estilos para el efecto de texto con sombra */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para el efecto de imagen con filtro */
+.image-filter {
+  filter: contrast(1.1) brightness(0.9);
+  transition: filter 0.3s ease;
+}
+
+.image-filter:hover {
+  filter: contrast(1.2) brightness(1);
+}
+
+/* Estilos para el efecto de botÃ³n con gradiente */
+.gradient-button {
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 1));
+  color: black;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gradient-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el efecto de botÃ³n con borde */
+.outline-button {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.outline-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Estilos para el efecto de tarjeta con reflejo */
+.reflection-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.reflection-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.7s ease;
+}
+
+.reflection-card:hover::after {
+  left: 150%;
+}
+
+/* Estilos para el efecto de tarjeta con rotaciÃ³n 3D */
+.card-3d {
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.card-3d:hover {
+  transform: rotateY(10deg) rotateX(5deg);
+}
+
+/* Estilos para el efecto de texto con revelaciÃ³n */
+.reveal-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-text span {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.reveal-text.visible span {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Estilos para el efecto de imagen con zoom */
+.zoom-image {
+  overflow: hidden;
+}
+
+.zoom-image img {
+  transition: transform 0.5s ease;
+}
+
+.zoom-image:hover img {
+  transform: scale(1.1);
+}
+
+/* Estilos para el efecto de tarjeta con hover gradual */
+.hover-gradient {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-gradient::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-gradient:hover::before {
+  opacity: 1;
+}
+
+/* Estilos para el efecto de botÃ³n con ripple */
+.ripple-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
   }
-  h2 {
-    @apply text-2xl;
+}
+
+/* Estilos para el efecto de texto con mÃ¡quina de escribir */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid white;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
   }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+/* Estilos para el efecto de tarjeta con sombra interna */
+.inner-shadow {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para el efecto de tarjeta con borde brillante */
+.glowing-border {
+  position: relative;
+}
+
+.glowing-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 14px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.5), transparent, rgba(255, 255, 255, 0.5));
+  z-index: -1;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estilos para el efecto de texto con desenfoque */
+.blur-text {
+  filter: blur(4px);
+  transition: filter 0.3s ease;
+}
+
+.blur-text:hover {
+  filter: blur(0);
+}
+
+/* Estilos para el efecto de tarjeta con perspectiva */
+.perspective-card {
+  perspective: 1000px;
+}
+
+.perspective-card-inner {
+  transition: transform 0.5s ease;
+}
+
+.perspective-card:hover .perspective-card-inner {
+  transform: rotateY(180deg) rotateX(5deg);
+}
+
+.perspective-card-front,
+.perspective-card-back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.perspective-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Estilos para el efecto de botÃ³n con brillo */
+.shine-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.shine-button:hover::after {
+  transform: rotate(45deg) translate(100%, 100%);
+}
+
+/* Estilos para el efecto de tarjeta con elevaciÃ³n */
+.elevation-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.elevation-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para el efecto de texto con distorsiÃ³n */
+.distortion-text {
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.distortion-text:hover {
+  transform: skewX(-10deg);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para el efecto de imagen con filtro de color */
+.color-filter {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.color-filter:hover {
+  filter: grayscale(0%);
+}
+
+/* Estilos para el efecto de tarjeta con borde animado */
+.animated-border {
+  position: relative;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(45deg, white, transparent, white) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: border-rotate 3s linear infinite;
+}
+
+@keyframes border-rotate {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 300% 0%;
+  }
+}
+
+/* Estilos para el efecto de botÃ³n con ondas */
+.wave-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: wave 2s infinite linear;
+}
+
+@keyframes wave {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Estilos para el efecto de tarjeta con sombra colorida */
+.colorful-shadow {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.colorful-shadow:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Estilos para el efecto de texto con contorno */
+.outline-text {
+  -webkit-text-stroke: 1px white;
+  color: transparent;
+  transition: color 0.3s ease;
+}
+
+.outline-text:hover {
+  color: white;
+}
+
+/* Estilos para el efecto de tarjeta con fondo de ruido */
+.noise-bg {
+  position: relative;
+}
+
+.noise-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  z-index: -1;
+}
+
+/* Estilos para el efecto de botÃ³n con texto que cambia */
+.text-change-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.text-change-button span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.text-change-button span:nth-child(1) {
+  transform: translateY(0);
+}
+
+.text-change-button span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(100%);
+}
+
+.text-change-button:hover span:nth-child(1) {
+  transform: translateY(-100%);
+}
+
+.text-change-button:hover span:nth-child(2) {
+  transform: translateY(0);
+}
+
+/* Estilos para el efecto de tarjeta con esquinas redondeadas animadas */
+.animated-corners {
+  border-radius: 12px;
+  transition: border-radius 0.3s ease;
+}
+
+.animated-corners:hover {
+  border-radius: 30px;
+}
+
+/* Estilos para el efecto de texto con sombra mÃºltiple */
+.multi-shadow-text {
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3), 2px 2px 0 rgba(255, 255, 255, 0.2), 3px 3px 0
+    rgba(255, 255, 255, 0.1);
+  transition: text-shadow 0.3s ease;
+}
+
+.multi-shadow-text:hover {
+  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.3), 4px 4px 0 rgba(255, 255, 255, 0.2), 6px 6px 0
+    rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos para el efecto de tarjeta con fondo de gradiente animado */
+.animated-gradient-bg {
+  background: linear-gradient(45deg, rgba(30, 30, 30, 0.5), rgba(10, 10, 10, 0.5));
+  background-size: 200% 200%;
+  animation: gradient-animation 5s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Estilos para el efecto de botÃ³n con borde que se dibuja */
+.draw-border-button {
+  position: relative;
+  border: none;
+  background: transparent;
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.draw-border-button::before,
+.draw-border-button::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.draw-border-button::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+}
+
+.draw-border-button::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.draw-border-button:hover::before,
+.draw-border-button:hover::after {
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilos para el efecto de tarjeta con sombra interna animada */
+.animated-inner-shadow {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.animated-inner-shadow:hover {
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Estilos para el efecto de texto con espaciado animado */
+.letter-spacing-text {
+  letter-spacing: 1px;
+  transition: letter-spacing 0.3s ease;
+}
+
+.letter-spacing-text:hover {
+  letter-spacing: 3px;
+}
+
+/* Estilos para el efecto de tarjeta con rotaciÃ³n */
+.rotate-card {
+  transition: transform 0.3s ease;
+}
+
+.rotate-card:hover {
+  transform: rotate(5deg);
+}
+
+/* Estilos para el efecto de botÃ³n con fondo que se expande */
+.expand-bg-button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.expand-bg-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.expand-bg-button:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+/* Estilos para el efecto de tarjeta con borde que parpadea */
+.blink-border {
+  border: 2px solid transparent;
+  animation: blink-border 2s infinite;
+}
+
+@keyframes blink-border {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+/* Estilos para el efecto de texto con desvanecimiento */
+.fade-text {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.fade-text:hover {
+  opacity: 1;
+}
+
+/* Estilos para el efecto de tarjeta con esquinas que se iluminan */
+.glowing-corners {
+  position: relative;
+}
+
+.glowing-corners::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glowing-corners::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid white;
+  border-right: 2px solid white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glowing-corners:hover::before,
+.glowing-corners:hover::after {
+  opacity: 1;
+}
+
+/* Estilos para el efecto de botÃ³n con texto que se desvanece */
+.fade-text-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.fade-text-button span {
+  display: inline-block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade-text-button span:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-text-button span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-text-button:hover span:nth-child(1) {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.fade-text-button:hover span:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Estilos para el efecto de tarjeta con zoom de fondo */
+.zoom-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.zoom-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.zoom-bg:hover::before {
+  transform: scale(1.1);
+}
+
+/* Estilos para el efecto de texto con subrayado animado */
+.underline-text {
+  position: relative;
+}
+
+.underline-text::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.underline-text:hover::after {
+  width: 100%;
+}
+
+/* Estilos para el efecto de tarjeta con borde que se expande */
+.expand-border {
+  position: relative;
+}
+
+.expand-border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0 solid white;
+  transition: border-width 0.3s ease;
+}
+
+.expand-border:hover::before {
+  border-width: 2px;
+}
+
+/* Estilos para el efecto de botÃ³n con fondo que se desliza */
+.slide-bg-button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.slide-bg-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.slide-bg-button:hover::before {
+  left: 0;
+}
+
+/* Estilos para el efecto de tarjeta con sombra que se expande */
+.expand-shadow {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.expand-shadow:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilos para el efecto de texto con color que cambia */
+.color-change-text {
+  background: linear-gradient(90deg, white, #a0a0a0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: color-change 3s linear infinite;
+}
+
+@keyframes color-change {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+/* Estilos para el efecto de tarjeta con borde de puntos */
+.dotted-border {
+  border: 2px dotted rgba(255, 255, 255, 0.3);
+  transition: border-color 0.3s ease;
+}
+
+.dotted-border:hover {
+  border-color: white;
+}
+
+/* Estilos para el efecto de botÃ³n con texto que se desliza */
+.slide-text-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide-text-button span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.slide-text-button span:nth-child(1) {
+  transform: translateX(0);
+}
+
+.slide-text-button span:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateX(100%);
+}
+
+.slide-text-button:hover span:nth-child(1) {
+  transform: translateX(-100%);
+}
+
+.slide-text-button:hover span:nth-child(2) {
+  transform: translateX(0);
+}
+
+/* Estilos para el efecto de tarjeta con esquinas redondeadas que cambian */
+.changing-radius {
+  border-radius: 12px;
+  transition: border-radius 0.3s ease;
+}
+
+.changing-radius:hover {
+  border-radius: 0;
+}
+
+/* Estilos para el efecto de texto con sombra que se expande */
+.expand-shadow-text {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: text-shadow 0.3s ease;
+}
+
+.expand-shadow-text:hover {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para el efecto de tarjeta con borde que se desvanece */
+.fade-border {
+  border: 2px solid white;
+  transition: border-color 0.3s ease;
+}
+
+.fade-border:hover {
+  border-color: transparent;
+}
+
+/* Estilos para el efecto de botÃ³n con fondo de gradiente que cambia */
+.changing-gradient-button {
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.8));
+  background-size: 200% 200%;
+  transition: background-position 0.3s ease;
+}
+
+.changing-gradient-button:hover {
+  background-position: 100% 100%;
+}
+
+/* Estilos para el efecto de tarjeta con rotaciÃ³n 3D */
+.rotate-3d {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.rotate-3d:hover {
+  transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+}
+
+/* Estilos para el efecto de texto con tamaÃ±o que cambia */
+.size-change-text {
+  font-size: 16px;
+  transition: font-size 0.3s ease;
+}
+
+.size-change-text:hover {
+  font-size: 18px;
+}
+
+/* Estilos para el efecto de tarjeta con opacidad que cambia */
+.opacity-change {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.opacity-change:hover {
+  opacity: 1;
+}
+
+/* Estilos para el efecto de botÃ³n con borde que se expande */
+.expand-border-button {
+  position: relative;
+  border: 2px solid transparent;
+  background-color: transparent;
+  color: white;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: border-color 0.3s ease;
+}
+
+.expand-border-button:hover {
+  border-color: white;
+}
+
+/* Estilos para el efecto de tarjeta con fondo que se desvanece */
+.fade-bg {
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.fade-bg:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos para el efecto de texto con peso que cambia */
+.weight-change-text {
+  font-weight: 400;
+  transition: font-weight 0.3s ease;
+}
+
+.weight-change-text:hover {
+  font-weight: 700;
+}
+
+/* Estilos para el efecto de tarjeta con altura que cambia */
+.height-change {
+  height: 200px;
+  transition: height 0.3s ease;
+}
+
+.height-change:hover {
+  height: 220px;
+}
+
+/* Estilos para el efecto de botÃ³n con ancho que cambia */
+.width-change-button {
+  width: 150px;
+  transition: width 0.3s ease;
+}
+
+.width-change-button:hover {
+  width: 180px;
+}
+
+/* Estilos para el efecto de tarjeta con margen que cambia */
+.margin-change {
+  margin: 10px;
+  transition: margin 0.3s ease;
+}
+
+.margin-change:hover {
+  margin: 20px;
+}
+
+/* Estilos para el efecto de texto con espaciado entre lÃ­neas que cambia */
+.line-height-change {
+  line-height: 1.5;
+  transition: line-height 0.3s ease;
+}
+
+.line-height-change:hover {
+  line-height: 2;
+}
+
+/* Estilos para el efecto de tarjeta con padding que cambia */
+.padding-change {
+  padding: 20px;
+  transition: padding 0.3s ease;
+}
+
+.padding-change:hover {
+  padding: 30px;
+}
+
+/* Estilos para el efecto de botÃ³n con rotaciÃ³n */
+.rotate-button {
+  transition: transform 0.3s ease;
+}
+
+.rotate-button:hover {
+  transform: rotate(5deg);
+}
+
+/* Estilos para el efecto de tarjeta con escala que cambia */
+.scale-change {
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.scale-change:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos para el efecto de texto con color que cambia */
+.color-change {
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease;
+}
+
+.color-change:hover {
+  color: white;
+}
+
+/* Estilos para el efecto de tarjeta con posiciÃ³n que cambia */
+.position-change {
+  position: relative;
+  top: 0;
+  transition: top 0.3s ease;
+}
+
+.position-change:hover {
+  top: -10px;
+}
+
+/* Estilos para el efecto de botÃ³n con sombra que cambia */
+.shadow-change-button {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.shadow-change-button:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilos para el efecto de tarjeta con borde redondeado que cambia */
+.border-radius-change {
+  border-radius: 12px;
+  transition: border-radius 0.3s ease;
+}
+
+.border-radius-change:hover {
+  border-radius: 20px;
+}
+
+/* Estilos para el efecto de texto con decoraciÃ³n que cambia */
+.decoration-change {
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+
+.decoration-change:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para el efecto de tarjeta con z-index que cambia */
+.z-index-change {
+  position: relative;
+  z-index: 1;
+  transition: z-index 0.3s ease;
+}
+
+.z-index-change:hover {
+  z-index: 2;
+}
+
+/* Estilos para el efecto de botÃ³n con cursor que cambia */
+.cursor-change {
+  cursor: default;
+  transition: cursor 0.3s ease;
+}
+
+.cursor-change:hover {
+  cursor: pointer;
+}
+
+/* Estilos para el efecto de tarjeta con visibilidad que cambia */
+.visibility-change {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.visibility-change:hover {
+  opacity: 1;
+}
+
+/* Estilos para el efecto de texto con alineaciÃ³n que cambia */
+.align-change {
+  text-align: left;
+  transition: text-align 0.3s ease;
+}
+
+.align-change:hover {
+  text-align: center;
+}
+
+/* Estilos para el efecto de tarjeta con display que cambia */
+.display-change {
+  display: block;
+  transition: display 0.3s ease;
+}
+
+.display-change:hover {
+  display: inline-block;
+}
+
+/* Estilos para el efecto de botÃ³n con overflow que cambia */
+.overflow-change {
+  overflow: hidden;
+  transition: overflow 0.3s ease;
+}
+
+.overflow-change:hover {
+  overflow: visible;
+}
+
+/* Estilos para el efecto de tarjeta con float que cambia */
+.float-change {
+  float: none;
+  transition: float 0.3s ease;
+}
+
+.float-change:hover {
+  float: left;
+}
+
+/* Estilos para el efecto de texto con direcciÃ³n que cambia */
+.direction-change {
+  direction: ltr;
+  transition: direction 0.3s ease;
+}
+
+.direction-change:hover {
+  direction: rtl;
+}
+
+/* Estilos para el efecto de tarjeta con clear que cambia */
+.clear-change {
+  clear: none;
+  transition: clear 0.3s ease;
+}
+
+.clear-change:hover {
+  clear: both;
+}
+
+/* Estilos para el efecto de botÃ³n con clip que cambia */
+.clip-change {
+  clip-path: circle(50%);
+  transition: clip-path 0.3s ease;
+}
+
+.clip-change:hover {
+  clip-path: circle(100%);
+}
+
+/* Estilos para el efecto de tarjeta con columnas que cambian */
+.column-change {
+  column-count: 1;
+  transition: column-count 0.3s ease;
+}
+
+.column-change:hover {
+  column-count: 2;
+}
+
+/* Estilos para el efecto de texto con orientaciÃ³n que cambia */
+.orientation-change {
+  writing-mode: horizontal-tb;
+  transition: writing-mode 0.3s ease;
+}
+
+.orientation-change:hover {
+  writing-mode: vertical-rl;
+}
+
+/* Estilos para el efecto de tarjeta con resize que cambia */
+.resize-change {
+  resize: none;
+  transition: resize 0.3s ease;
+}
+
+.resize-change:hover {
+  resize: both;
+}
+
+/* Estilos para el efecto de botÃ³n con word-spacing que cambia */
+.word-spacing-change {
+  word-spacing: normal;
+  transition: word-spacing 0.3s ease;
+}
+
+.word-spacing-change:hover {
+  word-spacing: 5px;
+}
+
+/* Estilos para el efecto de tarjeta con white-space que cambia */
+.white-space-change {
+  white-space: normal;
+  transition: white-space 0.3s ease;
+}
+
+.white-space-change:hover {
+  white-space: nowrap;
+}
+
+/* Estilos para el efecto de texto con list-style que cambia */
+.list-style-change {
+  list-style-type: disc;
+  transition: list-style-type 0.3s ease;
+}
+
+.list-style-change:hover {
+  list-style-type: square;
+}
+
+/* Estilos para el efecto de tarjeta con table-layout que cambia */
+.table-layout-change {
+  table-layout: auto;
+  transition: table-layout 0.3s ease;
+}
+
+.table-layout-change:hover {
+  table-layout: fixed;
+}
+
+/* Estilos para el efecto de botÃ³n con caption-side que cambia */
+.caption-side-change {
+  caption-side: top;
+  transition: caption-side 0.3s ease;
+}
+
+.caption-side-change:hover {
+  caption-side: bottom;
+}
+
+/* Estilos para el efecto de tarjeta con empty-cells que cambia */
+.empty-cells-change {
+  empty-cells: show;
+  transition: empty-cells 0.3s ease;
+}
+
+.empty-cells-change:hover {
+  empty-cells: hide;
+}
+
+/* Estilos para el efecto de texto con vertical-align que cambia */
+.vertical-align-change {
+  vertical-align: baseline;
+  transition: vertical-align 0.3s ease;
+}
+
+.vertical-align-change:hover {
+  vertical-align: top;
+}
+
+/* Estilos para el efecto de tarjeta con text-transform que cambia */
+.text-transform-change {
+  text-transform: none;
+  transition: text-transform 0.3s ease;
+}
+
+.text-transform-change:hover {
+  text-transform: uppercase;
+}
+
+/* Estilos para el efecto de botÃ³n con text-indent que cambia */
+.text-indent-change {
+  text-indent: 0;
+  transition: text-indent 0.3s ease;
+}
+
+.text-indent-change:hover {
+  text-indent: 20px;
+}
+
+/* Estilos para el efecto de tarjeta con text-justify que cambia */
+.text-justify-change {
+  text-align: left;
+  transition: text-align 0.3s ease;
+}
+
+.text-justify-change:hover {
+  text-align: justify;
+}
+
+/* Estilos para el efecto de texto con text-overflow que cambia */
+.text-overflow-change {
+  text-overflow: clip;
+  transition: text-overflow 0.3s ease;
+}
+
+.text-overflow-change:hover {
+  text-overflow: ellipsis;
+}
+
+/* Estilos para el efecto de tarjeta con word-break que cambia */
+.word-break-change {
+  word-break: normal;
+  transition: word-break 0.3s ease;
+}
+
+.word-break-change:hover {
+  word-break: break-all;
+}
+
+/* Estilos para el efecto de botÃ³n con word-wrap que cambia */
+.word-wrap-change {
+  word-wrap: normal;
+  transition: word-wrap 0.3s ease;
+}
+
+.word-wrap-change:hover {
+  word-wrap: break-word;
+}
+
+/* Estilos para el efecto de tarjeta con hyphens que cambia */
+.hyphens-change {
+  hyphens: none;
+  transition: hyphens 0.3s ease;
+}
+
+.hyphens-change:hover {
+  hyphens: auto;
+}
+
+/* Estilos para el efecto de texto con text-align-last que cambia */
+.text-align-last-change {
+  text-align-last: auto;
+  transition: text-align-last 0.3s ease;
+}
+
+.text-align-last-change:hover {
+  text-align-last: center;
+}
+
+/* Estilos para el efecto de tarjeta con text-decoration-style que cambia */
+.text-decoration-style-change {
+  text-decoration-style: solid;
+  transition: text-decoration-style 0.3s ease;
+}
+
+.text-decoration-style-change:hover {
+  text-decoration-style: wavy;
+}
+
+/* Estilos para el efecto de botÃ³n con text-decoration-color que cambia */
+.text-decoration-color-change {
+  text-decoration-color: white;
+  transition: text-decoration-color 0.3s ease;
+}
+
+.text-decoration-color-change:hover {
+  text-decoration-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Estilos para el efecto de tarjeta con text-decoration-line que cambia */
+.text-decoration-line-change {
+  text-decoration-line: none;
+  transition: text-decoration-line 0.3s ease;
+}
+
+.text-decoration-line-change:hover {
+  text-decoration-line: underline;
+}
+
+/* Estilos para el efecto de texto con text-underline-position que cambia */
+.text-underline-position-change {
+  text-underline-position: auto;
+  transition: text-underline-position 0.3s ease;
+}
+
+.text-underline-position-change:hover {
+  text-underline-position: under;
+}
+
+/* Estilos para el efecto de tarjeta con text-shadow que cambia */
+.text-shadow-change {
+  text-shadow: none;
+  transition: text-shadow 0.3s ease;
+}
+
+.text-shadow-change:hover {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para el efecto de botÃ³n con text-emphasis que cambia */
+.text-emphasis-change {
+  text-emphasis: none;
+  transition: text-emphasis 0.3s ease;
+}
+
+.text-emphasis-change:hover {
+  text-emphasis: filled;
+}
+
+/* Estilos para el efecto de tarjeta con text-emphasis-color que cambia */
+.text-emphasis-color-change {
+  text-emphasis-color: white;
+  transition: text-emphasis-color 0.3s ease;
+}
+
+.text-emphasis-color-change:hover {
+  text-emphasis-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Estilos para el efecto de texto con text-emphasis-style que cambia */
+.text-emphasis-style-change {
+  text-emphasis-style: none;
+  transition: text-emphasis-style 0.3s ease;
+}
+
+.text-emphasis-style-change:hover {
+  text-emphasis-style: filled;
+}
+
+/* Estilos para el efecto de tarjeta con text-emphasis-position que cambia */
+.text-emphasis-position-change {
+  text-emphasis-position: over right;
+  transition: text-emphasis-position 0.3s ease;
+}
+
+.text-emphasis-position-change:hover {
+  text-emphasis-position: under right;
+}
+
+/* Estilos para el efecto de botÃ³n con font-variant que cambia */
+.font-variant-change {
+  font-variant: normal;
+  transition: font-variant 0.3s ease;
+}
+
+.font-variant-change:hover {
+  font-variant: small-caps;
+}
+
+/* Estilos para el efecto de tarjeta con font-stretch que cambia */
+.font-stretch-change {
+  font-stretch: normal;
+  transition: font-stretch 0.3s ease;
+}
+
+.font-stretch-change:hover {
+  font-stretch: expanded;
+}
+
+/* Estilos para el efecto de texto con font-size-adjust que cambia */
+.font-size-adjust-change {
+  font-size-adjust: none;
+  transition: font-size-adjust 0.3s ease;
+}
+
+.font-size-adjust-change:hover {
+  font-size-adjust: 0.5;
+}
+
+/* Estilos para el efecto de tarjeta con font-synthesis que cambia */
+.font-synthesis-change {
+  font-synthesis: weight style;
+  transition: font-synthesis 0.3s ease;
+}
+
+.font-synthesis-change:hover {
+  font-synthesis: none;
+}
+
+/* Estilos para el efecto de botÃ³n con font-kerning que cambia */
+.font-kerning-change {
+  font-kerning: auto;
+  transition: font-kerning 0.3s ease;
+}
+
+.font-kerning-change:hover {
+  font-kerning: normal;
+}
+
+/* Estilos para el efecto de tarjeta con font-feature-settings que cambia */
+.font-feature-settings-change {
+  font-feature-settings: normal;
+  transition: font-feature-settings 0.3s ease;
+}
+
+.font-feature-settings-change:hover {
+  font-feature-settings: "smcp" on;
+}
+
+/* Estilos para el efecto de texto con font-language-override que cambia */
+.font-language-override-change {
+  font-language-override: normal;
+  transition: font-language-override 0.3s ease;
+}
+
+.font-language-override-change:hover {
+  font-language-override: "ENG";
+}
+
+/* Estilos para el efecto de tarjeta con font-optical-sizing que cambia */
+.font-optical-sizing-change {
+  font-optical-sizing: auto;
+  transition: font-optical-sizing 0.3s ease;
+}
+
+.font-optical-sizing-change:hover {
+  font-optical-sizing: none;
+}
+
+/* Estilos para el efecto de botÃ³n con font-variation-settings que cambia */
+.font-variation-settings-change {
+  font-variation-settings: normal;
+  transition: font-variation-settings 0.3s ease;
+}
+
+.font-variation-settings-change:hover {
+  font-variation-settings: "wght" 700;
+}
+
+/* Estilos para el efecto de tarjeta con font-palette que cambia */
+.font-palette-change {
+  font-palette: normal;
+  transition: font-palette 0.3s ease;
+}
+
+.font-palette-change:hover {
+  font-palette: light;
+}
+
+/* Estilos para el efecto de texto con font-variant-alternates que cambia */
+.font-variant-alternates-change {
+  font-variant-alternates: normal;
+  transition: font-variant-alternates 0.3s ease;
+}
+
+.font-variant-alternates-change:hover {
+  font-variant-alternates: historical-forms;
+}
+
+/* Estilos para el efecto de tarjeta con font-variant-caps que cambia */
+.font-variant-caps-change {
+  font-variant-caps: normal;
+  transition: font-variant-caps 0.3s ease;
+}
+
+.font-variant-caps-change:hover {
+  font-variant-caps: small-caps;
+}
+
+/* Estilos para el efecto de botÃ³n con font-variant-east-asian que cambia */
+.font-variant-east-asian-change {
+  font-variant-east-asian: normal;
+  transition: font-variant-east-asian 0.3s ease;
+}
+
+.font-variant-east-asian-change:hover {
+  font-variant-east-asian: ruby;
+}
+
+/* Estilos para el efecto de tarjeta con font-variant-ligatures que cambia */
+.font-variant-ligatures-change {
+  font-variant-ligatures: normal;
+  transition: font-variant-ligatures 0.3s ease;
+}
+
+.font-variant-ligatures-change:hover {
+  font-variant-ligatures: none;
+}
+
+/* Estilos para el efecto de texto con font-variant-numeric que cambia */
+.font-variant-numeric-change {
+  font-variant-numeric: normal;
+  transition: font-variant-numeric 0.3s ease;
+}
+
+.font-variant-numeric-change:hover {
+  font-variant-numeric: ordinal;
+}
+
+/* Estilos para el efecto de tarjeta con font-variant-position que cambia */
+.font-variant-position-change {
+  font-variant-position: normal;
+  transition: font-variant-position 0.3s ease;
+}
+
+.font-variant-position-change:hover {
+  font-variant-position: super;
+}
+
+/* Estilos para el efecto de botÃ³n con font-size que cambia */
+.font-size-change {
+  font-size: 16px;
+  transition: font-size 0.3s ease;
+}
+
+.font-size-change:hover {
+  font-size: 18px;
+}
+
+/* Estilos para el efecto de tarjeta con font-style que cambia */
+.font-style-change {
+  font-style: normal;
+  transition: font-style 0.3s ease;
+}
+
+.font-style-change:hover {
+  font-style: italic;
+}
+
+/* Estilos para el efecto de texto con font-weight que cambia */
+.font-weight-change {
+  font-weight: normal;
+  transition: font-weight 0.3s ease;
+}
+
+.font-weight-change:hover {
+  font-weight: bold;
 }
